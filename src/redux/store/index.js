@@ -2,15 +2,18 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import createSagaMiddleware from 'redux-saga'
 import { createBrowserHistory } from 'history'
+import { all } from 'redux-saga/effects'
 
 /*** Reducers ***/
-// import app                 from '../modules/app/AppReducer'
+import reducers from '../reducers/index'
+/*** Sagas ***/
+import repositories from '../sagas/index' 
 
 export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
-//   app,
+  reducers,
   router: connectRouter(history)
 });
 
@@ -22,3 +25,11 @@ export const store = createStore(
   rootReducer,
   composeEnhancer(applyMiddleware(...middlewares))
 )
+
+export default function* rootSagas() {
+	yield all([
+    repositories(),
+	])
+} 
+
+sagaMiddleware.run(rootSagas)
