@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router'
 import Home from './pages/Home';
 import { store, history } from './redux/store/index'
+import 'antd/dist/antd.css'
 
 const App = () => (
 	<Provider store={store}>
