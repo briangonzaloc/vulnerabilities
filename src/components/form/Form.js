@@ -24,7 +24,7 @@ const CustomForm = ({ onSubmit }) => {
 
                         <Select style={{ width: 200 }}>
                             <Select.Option value={0}>Todos</Select.Option>
-                            <Select.Option value={1}>Extract</Select.Option>
+                            <Select.Option value={1}>Deserialización insegura</Select.Option>
                             <Select.Option value={2}>SQL injection</Select.Option>
                         </Select>
                 </Form.Item>
